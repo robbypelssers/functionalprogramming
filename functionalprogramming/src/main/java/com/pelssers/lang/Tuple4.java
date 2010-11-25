@@ -1,29 +1,33 @@
 package com.pelssers.lang;
 
-public class Tuple4<A,B,C,D> extends AbstractTuple {
+public class Tuple4<A,B,C,D> {
 
+	private A o1;
+	private B o2;
+	private C o3;
+	private D o4;
+	
 	public Tuple4(A o1, B o2, C o3, D o4) {
-		super(o1, o2, o3, o4);		
+        this.o1 = o1;
+        this.o2 = o2;
+        this.o3 = o3;
+        this.o4 = o4;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public A get1() {
-		return (A) super.get1();
+		return o1;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public B get2() {
-		return (B) super.get2();
-	}
+		return o2;
+	}	
 	
-	@SuppressWarnings("unchecked")
 	public C get3() {
-		return (C) super.get3();
+		return o3;
 	}	
 	
-	@SuppressWarnings("unchecked")
 	public D get4() {
-		return (D) super.get4();
-	}	
+		return o4;
+	}
 	
 }
