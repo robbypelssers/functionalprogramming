@@ -23,7 +23,6 @@ public interface Groupable<T> extends Iterable<T> {
 	Iterator<T> iterator();
 	void doWhile(PredicateFunction<T> p, VoidFunction<T> v);
 	void doUntill(final PredicateFunction<T> p, final VoidFunction<T> v);
-	void printAll();
 	<S> Map<S, Groupable<T>> groupBy(Function<S,T> f);
 	String stringJoin(Function<String, T> f, String delimiter);
 	String stringJoin(String delimiter);

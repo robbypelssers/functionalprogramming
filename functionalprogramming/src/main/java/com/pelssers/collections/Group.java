@@ -10,7 +10,6 @@ import java.util.TreeSet;
 import com.pelssers.functions.Function;
 import com.pelssers.functions.PredicateFunction;
 import com.pelssers.functions.VoidFunction;
-import com.pelssers.functions.factories.SystemFunctions;
 import com.pelssers.functions.impl.MapperFunction;
 
 public class Group<T> implements Groupable<T> {
@@ -138,11 +137,6 @@ public class Group<T> implements Groupable<T> {
 			}
 			v.apply(next);
 		}	
-	}
-
-	@Override
-	public void printAll() {
-		forEach(SystemFunctions.<T>println());
 	}
 
 	@Override

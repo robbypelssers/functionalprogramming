@@ -1,7 +1,9 @@
 package com.pelssers.functions;
 
-public interface VoidFunction<T> {
+import com.pelssers.lang.Unit;
+
+public interface VoidFunction<T> extends Function<Unit, T>  {
 	
-	void apply(T object);
+	Unit apply(T object);
 
 }
