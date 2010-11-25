@@ -1,5 +1,5 @@
 package com.pelssers.functions;
 
-public interface StringFunction extends Function<String, String> {
+public interface StringFunction<T> extends Function<T, String> {
 
 }

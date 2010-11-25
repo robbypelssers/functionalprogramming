@@ -3,13 +3,12 @@ package com.pelssers.functions.factories;
 import com.pelssers.collections.Group;
 import com.pelssers.collections.Groupable;
 import com.pelssers.functions.StringFunction;
-import com.pelssers.functions.impl.AbstractFunction;
 import com.pelssers.functions.impl.AbstractStringFunction;
 
 public class StringFunctions {
 
-	public static StringFunction toUpperCase() {
-		return new AbstractStringFunction() {
+	public static StringFunction<String> toUpperCase() {
+		return new AbstractStringFunction<String>() {
 			@Override
 			public String apply(String object) {
 				return object.toUpperCase();
@@ -17,8 +16,8 @@ public class StringFunctions {
 		};
 	}
 	
-	public static StringFunction toLowerCase() {
-		return new AbstractStringFunction() {
+	public static StringFunction<String> toLowerCase() {
+		return new AbstractStringFunction<String>() {
 			@Override
 			public String apply(String object) {
 				return object.toLowerCase();
@@ -26,8 +25,8 @@ public class StringFunctions {
 		};		
 	}
 	
-	public static StringFunction trim() {
-		return new AbstractStringFunction() {
+	public static StringFunction<String> trim() {
+		return new AbstractStringFunction<String>() {
 			@Override
 			public String apply(String object) {
 				return object.trim();
@@ -35,17 +34,17 @@ public class StringFunctions {
 		};		
 	}
 	
-	public static AbstractFunction<Groupable<String>, String> splitWords() {
-		return new AbstractFunction<Groupable<String>, String>() {
+	public static StringFunction<Groupable<String>> splitWords() {
+		return new AbstractStringFunction<Groupable<String>>() {
 			@Override
 			public Groupable<String> apply(String object) {				
 				return new Group<String>(object.split("\\s"));
 			}
 		};
-	}
+	}	
 	
-	public static StringFunction capitalize() {
-		return new AbstractStringFunction() {
+	public static StringFunction<String> capitalize() {
+		return new AbstractStringFunction<String>() {
 			@Override
 			public String apply(String object) {				
 				return object.length() > 0 ? Character.toUpperCase(object.charAt(0)) + object.substring(1) : object;
@@ -53,8 +52,8 @@ public class StringFunctions {
 		};		
 	}
 	
-	public static StringFunction uncapitalize() {
-		return new AbstractStringFunction() {
+	public static StringFunction<String> uncapitalize() {
+		return new AbstractStringFunction<String>() {
 			@Override
 			public String apply(String object) {				
 				return object.length() > 0 ? Character.toLowerCase(object.charAt(0)) + object.substring(1) : object;
@@ -62,8 +61,8 @@ public class StringFunctions {
 		};		
 	}
 	
-	public static StringFunction capitalizeAll() {
-		return new AbstractStringFunction() {
+	public static StringFunction<String> capitalizeAll() {
+		return new AbstractStringFunction<String>() {
 			@Override
 			public String apply(String object) {
 				//first split the string into 1 or more words
