@@ -12,8 +12,6 @@ import com.pelssers.functions.PredicateFunction;
 import com.pelssers.functions.factories.SystemFunctions;
 import com.pelssers.functions.impl.AbstractFunction;
 import com.pelssers.functions.impl.AbstractPredicateFunction;
-import com.pelssers.lang.Tuple1;
-import com.pelssers.lang.Tuple2;
 import com.pelssers.testdata.Person;
 
 public class GroupTest {
@@ -51,10 +49,10 @@ public class GroupTest {
 	
 	@Test
 	public void testExists() {
-		PredicateFunction<Person> p = new AbstractPredicateFunction<Person>(new Tuple2<String, Integer>("Pelssers", 33)) {
+		PredicateFunction<Person> p = new AbstractPredicateFunction<Person>() {
 			@Override
 			public Boolean apply(Person object) {
-				return object.getlName().equals(getTuple().get1()) &&  object.getAge().equals(getTuple().get2());
+				return object.getlName().equals("Pelssers") &&  object.getAge().equals(33);
 			}
 		};
 		
@@ -64,10 +62,10 @@ public class GroupTest {
 	
 	@Test
 	public void testFilter() {
-		PredicateFunction<Person> p = new AbstractPredicateFunction<Person>(new Tuple1<Integer>(33)) {
+		PredicateFunction<Person> p = new AbstractPredicateFunction<Person>() {
 			@Override
 			public Boolean apply(Person object) {
-				return object.getAge().equals(getTuple().get1());
+				return object.getAge().equals(33);
 			}
 		};	
 		Assert.assertEquals(3, persons.filter(p).size());	
@@ -92,10 +90,10 @@ public class GroupTest {
 	
 	@Test
 	public void testDoWhile() {
-		PredicateFunction<Person> p = new AbstractPredicateFunction<Person>(new Tuple1<Integer>(33)) {
+		PredicateFunction<Person> p = new AbstractPredicateFunction<Person>() {
 			@Override
 			public Boolean apply(Person object) {
-				return object.getAge().equals(getTuple().get1());
+				return object.getAge().equals(33);
 			}
 		};
 		persons.doWhile(p, SystemFunctions.<Person>println());
@@ -103,10 +101,10 @@ public class GroupTest {
 	
 	@Test
 	public void testDoUntill() {
-		PredicateFunction<Person> p = new AbstractPredicateFunction<Person>(new Tuple1<Integer>(38)) {
+		PredicateFunction<Person> p = new AbstractPredicateFunction<Person>() {
 			@Override
 			public Boolean apply(Person object) {
-				return object.getAge().equals(getTuple().get1());
+				return object.getAge().equals(38);
 			}
 		};
 		persons.doUntill(p, SystemFunctions.<Person>println());	
