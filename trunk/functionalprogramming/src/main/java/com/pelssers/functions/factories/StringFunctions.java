@@ -53,6 +53,15 @@ public class StringFunctions {
 		};		
 	}
 	
+	public static StringFunction uncapitalize() {
+		return new AbstractStringFunction() {
+			@Override
+			public String apply(String object) {				
+				return object.length() > 0 ? Character.toLowerCase(object.charAt(0)) + object.substring(1) : object;
+			}
+		};		
+	}
+	
 	public static StringFunction capitalizeAll() {
 		return new AbstractStringFunction() {
 			@Override

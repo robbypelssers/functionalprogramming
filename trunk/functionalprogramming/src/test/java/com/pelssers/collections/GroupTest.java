@@ -87,7 +87,7 @@ public class GroupTest {
 			}
 		};
 		Groupable<String> fullNames = persons.map(mapper);
-		fullNames.printAll();
+		SystemFunctions.<String>printlnAll().apply(fullNames);
 	}
 	
 	@Test
