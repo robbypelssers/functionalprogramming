@@ -35,13 +35,21 @@ public class Group<T> implements Groupable<T> {
 	}
 		
 	public Boolean exists(final PredicateFunction<T> p) {
-		Boolean exists = false;
+		Boolean result = false;
 		for (T object : this.collection) {
 			if (p.apply(object)) {
 				return true;
 			}
 		}
-		return exists;
+		return result;
+	}
+	
+	public Boolean forAll(final PredicateFunction<T> p) {
+		Boolean result = true;
+		for (Iterator<T> i = iterator(); i.hasNext() && result;) {
+			result = p.apply(i.next());
+		}
+		return result;
 	}
 	
 	public void forEach(final VoidFunction<T> v) {

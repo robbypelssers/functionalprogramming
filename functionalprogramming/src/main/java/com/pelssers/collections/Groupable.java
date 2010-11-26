@@ -10,6 +10,7 @@ import com.pelssers.functions.VoidFunction;
 public interface Groupable<T> extends Iterable<T> {
 
 	Boolean exists(PredicateFunction<T> p);
+	Boolean forAll(PredicateFunction<T> p);
 	void forEach(VoidFunction<T> v);
 	Groupable<T> add(T object);
 	T get(int index);

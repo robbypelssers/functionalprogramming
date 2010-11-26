@@ -13,6 +13,7 @@ import com.pelssers.functions.factories.SystemFunctions;
 import com.pelssers.functions.impl.AbstractFunction;
 import com.pelssers.functions.impl.AbstractPredicateFunction;
 import com.pelssers.testdata.Person;
+import static com.pelssers.functions.impl.Predicates.*;
 
 public class GroupTest {
 
@@ -50,14 +51,31 @@ public class GroupTest {
 	@Test
 	public void testExists() {
 		PredicateFunction<Person> p = new AbstractPredicateFunction<Person>() {
+			
+			String name = "Pelssers"; 
+			Integer age = 33;
 			@Override
 			public Boolean apply(Person object) {
-				return object.getlName().equals("Pelssers") &&  object.getAge().equals(33);
+				return object.getlName().equals(name) &&  object.getAge().equals(age);
 			}
 		};
 		
 		Boolean containsPerson = persons.exists(p);
 		Assert.assertEquals(true, containsPerson.booleanValue());
+	}
+	
+	@Test
+	public void testGreatherThen() {
+		Assert.assertEquals(Boolean.TRUE, numbers.forAll(gt(2)));
+	}
+	
+	@Test
+	public void testLessThen() {
+		Assert.assertEquals(Boolean.FALSE, numbers.forAll(lt(10)));		
+	}
+	
+	public void testEndsWith() {
+		Assert.assertEquals(2, words.filter(endsWith("te")));
 	}
 	
 	@Test
@@ -186,10 +204,9 @@ public class GroupTest {
 		Assert.assertEquals(1, map.get(38).size());
 	}
 	
+	@Test
 	public void testDistinct() {
 		Assert.assertEquals(5, numbers.distinct().size());
 		Assert.assertEquals(4, words.distinct().size());
 	}
-	
-
 }
