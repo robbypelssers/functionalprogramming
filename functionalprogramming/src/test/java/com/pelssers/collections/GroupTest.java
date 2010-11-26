@@ -1,8 +1,6 @@
 package com.pelssers.collections;
 
-import static com.pelssers.functions.impl.Predicates.endsWith;
-import static com.pelssers.functions.impl.Predicates.gt;
-import static com.pelssers.functions.impl.Predicates.lt;
+import static com.pelssers.functions.impl.Predicates.*;
 
 import java.util.Map;
 
@@ -75,8 +73,14 @@ public class GroupTest {
 		Assert.assertEquals(Boolean.FALSE, numbers.forAll(lt(10)));		
 	}
 	
+	@Test
 	public void testEndsWith() {
-		Assert.assertEquals(2, words.filter(endsWith("te")));
+		Assert.assertEquals(2, words.filter(endsWith("te")).size());
+	}
+	
+	@Test
+	public void testStartsWith() {
+		Assert.assertEquals(2, words.filter(startsWith("dup")).size());		
 	}
 	
 	@Test
