@@ -1,15 +1,15 @@
 package com.pelssers.functions.factories;
 
+import static com.pelssers.lang.Unit.unit;
+
 import com.pelssers.collections.Groupable;
 import com.pelssers.functions.VoidFunction;
-import com.pelssers.functions.impl.AbstractVoidFunction;
 import com.pelssers.lang.Unit;
-import static com.pelssers.lang.Unit.unit;
 
 public class SystemFunctions {
 
 	public static <T> VoidFunction<T> println() {
-	    VoidFunction<T> v = new AbstractVoidFunction<T>() {
+	    VoidFunction<T> v = new VoidFunction<T>() {
 		    @Override
 		    public Unit apply(T object) {
 			    System.out.println(object);
@@ -20,7 +20,7 @@ public class SystemFunctions {
     }
 	
 	public static <T> VoidFunction<Groupable<T>> printlnAll() {
-	    VoidFunction<Groupable<T>> v = new AbstractVoidFunction<Groupable<T>>() {
+	    VoidFunction<Groupable<T>> v = new VoidFunction<Groupable<T>>() {
 			@Override
 			public Unit apply(Groupable<T> group) {
 				for (T object : group) {

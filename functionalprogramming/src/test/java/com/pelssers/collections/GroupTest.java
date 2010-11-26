@@ -1,5 +1,9 @@
 package com.pelssers.collections;
 
+import static com.pelssers.functions.impl.Predicates.endsWith;
+import static com.pelssers.functions.impl.Predicates.gt;
+import static com.pelssers.functions.impl.Predicates.lt;
+
 import java.util.Map;
 
 import junit.framework.Assert;
@@ -10,10 +14,7 @@ import org.junit.Test;
 import com.pelssers.functions.Function;
 import com.pelssers.functions.PredicateFunction;
 import com.pelssers.functions.factories.SystemFunctions;
-import com.pelssers.functions.impl.AbstractFunction;
-import com.pelssers.functions.impl.AbstractPredicateFunction;
 import com.pelssers.testdata.Person;
-import static com.pelssers.functions.impl.Predicates.*;
 
 public class GroupTest {
 
@@ -50,7 +51,7 @@ public class GroupTest {
 	
 	@Test
 	public void testExists() {
-		PredicateFunction<Person> p = new AbstractPredicateFunction<Person>() {
+		PredicateFunction<Person> p = new PredicateFunction<Person>() {
 			
 			String name = "Pelssers"; 
 			Integer age = 33;
@@ -80,7 +81,7 @@ public class GroupTest {
 	
 	@Test
 	public void testFilter() {
-		PredicateFunction<Person> p = new AbstractPredicateFunction<Person>() {
+		PredicateFunction<Person> p = new PredicateFunction<Person>() {
 			@Override
 			public Boolean apply(Person object) {
 				return object.getAge().equals(33);
@@ -96,7 +97,7 @@ public class GroupTest {
 	
 	@Test
 	public void testMap() {
-		Function<String,Person> mapper = new AbstractFunction<String,Person>() {
+		Function<String,Person> mapper = new Function<String,Person>() {
 			@Override
 			public String apply(Person object) {
 				return object.getfName() + " " + object.getlName();
@@ -108,7 +109,7 @@ public class GroupTest {
 	
 	@Test
 	public void testDoWhile() {
-		PredicateFunction<Person> p = new AbstractPredicateFunction<Person>() {
+		PredicateFunction<Person> p = new PredicateFunction<Person>() {
 			@Override
 			public Boolean apply(Person object) {
 				return object.getAge().equals(33);
@@ -119,7 +120,7 @@ public class GroupTest {
 	
 	@Test
 	public void testDoUntill() {
-		PredicateFunction<Person> p = new AbstractPredicateFunction<Person>() {
+		PredicateFunction<Person> p = new PredicateFunction<Person>() {
 			@Override
 			public Boolean apply(Person object) {
 				return object.getAge().equals(38);
@@ -131,7 +132,7 @@ public class GroupTest {
 	
 	@Test
 	public void testStringJoin() {
-		Function<String, Person> f = new AbstractFunction<String, Person>() {
+		Function<String, Person> f = new Function<String, Person>() {
 			@Override
 			public String apply(Person object) {
 				return "{fName: " + object.getfName()+ ", lName: " + object.getlName() + "}" ;
@@ -191,7 +192,7 @@ public class GroupTest {
 	
 	@Test
 	public void testGroupBy() {
-		Function<Integer, Person> toKey = new AbstractFunction<Integer, Person>() {
+		Function<Integer, Person> toKey = new Function<Integer, Person>() {
 			@Override
 			public Integer apply(Person object) {
 				return object.getAge();
