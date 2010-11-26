@@ -60,16 +60,7 @@ public class StringFunctions {
 			}
 		};		
 	}
-	
-//	public static StringFunction<String> applyFunctionToLetterAtIndex(Tuple2<Integer, Function<Character,Character>> tuple) {
-//		return new AbstractStringFunction<String>(new Tuple2<Integer, Function<Character,Character>>(tuple.get1(), tuple.get2())) {
-//			@Override
-//			public String apply(String object) {				
-//				return object.length() > 0 ? Character.toLowerCase(object.charAt(0)) + object.substring(1) : object;
-//			}
-//		};
-//	}
-	
+		
 	public static StringFunction<String> capitalizeAll() {
 		return new AbstractStringFunction<String>() {
 			@Override
