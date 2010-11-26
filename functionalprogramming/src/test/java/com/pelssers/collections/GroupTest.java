@@ -1,6 +1,10 @@
 package com.pelssers.collections;
 
 import static com.pelssers.functions.impl.Predicates.*;
+//import static com.pelssers.functions.impl.Predicates.eq;
+//import static com.pelssers.functions.impl.Predicates.gt;
+//import static com.pelssers.functions.impl.Predicates.lt;
+//import static com.pelssers.functions.impl.Predicates.startsWith;
 
 import java.util.Map;
 
@@ -109,6 +113,11 @@ public class GroupTest {
 	@Test
 	public void testFilterByNumber() {
 		Assert.assertEquals(2, numbers.filter(eq(8)).size());
+	}
+	
+	@Test
+	public void testFilterByGetter() {
+		Assert.assertEquals(2, persons.filter(Predicates.<Person>eqBy("getLastName", "Pelssers")).size());
 	}
 	
 	@Test
