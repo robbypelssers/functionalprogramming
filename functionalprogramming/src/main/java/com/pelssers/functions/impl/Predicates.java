@@ -28,6 +28,10 @@ public class Predicates {
 		return new StartsWithPredicate(prefix);
 	}
 	
+	public static <T> PredicateFunction<T> eq(T object) {
+		return new EqualsPredicate<T>(object);
+	}
+	
 	private static class LessThenPredicate<T extends Number> implements PredicateFunction<T> {
 		private T number;
 		public LessThenPredicate(T number) {
@@ -94,5 +98,16 @@ public class Predicates {
 		}
 		
 	}
+	
+	private static class EqualsPredicate<T> implements PredicateFunction<T>  {
+		private T object2;
+		public EqualsPredicate(T object2) {
+			this.object2 = object2;
+		}
+		@Override
+		public Boolean apply(T object1) {
+			return object2.equals(object1);
+		}
+	}		
 	
 }
