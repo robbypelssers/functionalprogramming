@@ -13,7 +13,7 @@ import org.junit.Test;
 
 import com.pelssers.functions.Function;
 import com.pelssers.functions.PredicateFunction;
-import com.pelssers.functions.factories.SystemFunctions;
+import com.pelssers.functions.impl.SystemFunctions;
 import com.pelssers.testdata.Person;
 
 public class GroupTest {

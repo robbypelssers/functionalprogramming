@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import com.pelssers.collections.Group;
 import com.pelssers.collections.Groupable;
-import com.pelssers.functions.factories.StringFunctions;
+import com.pelssers.functions.impl.StringFunctions;
 
 public class StringFunctionsTest {
 
