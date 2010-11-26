@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import com.pelssers.functions.Function;
 import com.pelssers.functions.PredicateFunction;
+import com.pelssers.functions.impl.Predicates;
 import com.pelssers.functions.impl.SystemFunctions;
 import com.pelssers.testdata.Person;
 
@@ -55,7 +56,7 @@ public class GroupTest {
 			Integer age = 33;
 			@Override
 			public Boolean apply(Person object) {
-				return object.getlName().equals(name) &&  object.getAge().equals(age);
+				return object.getLastName().equals(name) &&  object.getAge().equals(age);
 			}
 		};
 		
@@ -95,6 +96,22 @@ public class GroupTest {
 	}
 	
 	@Test
+	public void testFilterByPerson() {
+        Person person = new Person("Robby", "Pelssers", 33);		
+		Assert.assertEquals(1, persons.filter(eq(person)).size());
+	}
+	
+	@Test
+	public void testFilterByString() {
+		Assert.assertEquals(2, words.filter(eq("duplicate")).size());
+	}
+	
+	@Test
+	public void testFilterByNumber() {
+		Assert.assertEquals(2, numbers.filter(eq(8)).size());
+	}
+	
+	@Test
 	public void testForEach() {
 		persons.forEach(SystemFunctions.<Person>println());
 	}
@@ -104,7 +121,7 @@ public class GroupTest {
 		Function<String,Person> mapper = new Function<String,Person>() {
 			@Override
 			public String apply(Person object) {
-				return object.getfName() + " " + object.getlName();
+				return object.getFirstName() + " " + object.getLastName();
 			}
 		};
 		Groupable<String> fullNames = persons.map(mapper);
@@ -139,7 +156,7 @@ public class GroupTest {
 		Function<String, Person> f = new Function<String, Person>() {
 			@Override
 			public String apply(Person object) {
-				return "{fName: " + object.getfName()+ ", lName: " + object.getlName() + "}" ;
+				return "{fName: " + object.getFirstName()+ ", lName: " + object.getLastName() + "}" ;
 			}
 		};
 		String joined = persons.stringJoin(f, ",");

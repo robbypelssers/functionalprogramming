@@ -12,11 +12,11 @@ public class Person {
 		this.age = age;
 	}
 
-	public String getfName() {
+	public String getFirstName() {
 		return fName;
 	}
 
-	public String getlName() {
+	public String getLastName() {
 		return lName;
 	}
 
@@ -26,5 +26,11 @@ public class Person {
 	
 	public String toString() {
 		return fName + " " + lName + " " + age;
+	}
+	
+	@Override
+	public boolean equals(Object object) {
+		Person person = (Person) object;
+		return this.getFirstName().equals(person.getFirstName()) && this.getLastName().equals(getLastName());
 	}
 }
