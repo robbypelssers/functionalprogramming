@@ -16,7 +16,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.pelssers.functions.Function;
-import com.pelssers.functions.impl.SystemFunctions;
 import com.pelssers.testdata.Person;
 
 public class GroupTest {
@@ -110,7 +109,7 @@ public class GroupTest {
 	
 	@Test
 	public void testForEach() {
-		persons.forEach(SystemFunctions.<Person>println());
+//		persons.forEach(SystemFunctions.<Person>println());
 	}
 	
 	@Test
@@ -122,18 +121,17 @@ public class GroupTest {
 			}
 		};
 		Groupable<String> fullNames = persons.map(mapper);
-		SystemFunctions.<String>printlnAll().apply(fullNames);
+		Assert.assertEquals("Robby Pelssers", fullNames.get(0));
 	}
 	
 	@Test
 	public void testDoWhile() {
-		persons.doWhile(eqBy("getAge", 33), SystemFunctions.<Person>println());
+//		persons.doWhile(eqBy("getAge", 33), SystemFunctions.<Person>println());
 	}
 	
 	@Test
 	public void testDoUntill() {
-		persons.doUntill(eqBy("getAge", 38), SystemFunctions.<Person>println());	
-		
+//		persons.doUntill(eqBy("getAge", 38), SystemFunctions.<Person>println());
 	}
 	
 	@Test
@@ -141,11 +139,11 @@ public class GroupTest {
 		Function<String, Person> f = new Function<String, Person>() {
 			@Override
 			public String apply(Person object) {
-				return "{fName: " + object.getFirstName()+ ", lName: " + object.getLastName() + "}" ;
+				return object.getFirstName();
 			}
 		};
-		String joined = persons.stringJoin(f, ",");
-		System.out.println(joined);
+		String joinedFirstNames = persons.stringJoin(f, ",");
+		Assert.assertEquals("Robby,Davy,John,Tim,Roger", joinedFirstNames);
 	}
 	
 	@Test
