@@ -1,21 +1,12 @@
 package com.pelssers.collections;
 
 import static com.pelssers.functions.impl.Predicates.*;
-//import static com.pelssers.functions.impl.Predicates.eq;
-//import static com.pelssers.functions.impl.Predicates.gt;
-//import static com.pelssers.functions.impl.Predicates.lt;
-//import static com.pelssers.functions.impl.Predicates.startsWith;
-
 import java.util.Map;
-
 import junit.framework.Assert;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import com.pelssers.functions.Function;
 import com.pelssers.functions.PredicateFunction;
-import com.pelssers.functions.impl.Predicates;
 import com.pelssers.functions.impl.SystemFunctions;
 import com.pelssers.testdata.Person;
 
@@ -54,18 +45,7 @@ public class GroupTest {
 	
 	@Test
 	public void testExists() {
-		PredicateFunction<Person> p = new PredicateFunction<Person>() {
-			
-			String name = "Pelssers"; 
-			Integer age = 33;
-			@Override
-			public Boolean apply(Person object) {
-				return object.getLastName().equals(name) &&  object.getAge().equals(age);
-			}
-		};
-		
-		Boolean containsPerson = persons.exists(p);
-		Assert.assertEquals(true, containsPerson.booleanValue());
+		Assert.assertEquals(Boolean.TRUE, persons.exists(eqBy("getAge", 38)));
 	}
 	
 	@Test
@@ -89,14 +69,8 @@ public class GroupTest {
 	}
 	
 	@Test
-	public void testFilter() {
-		PredicateFunction<Person> p = new PredicateFunction<Person>() {
-			@Override
-			public Boolean apply(Person object) {
-				return object.getAge().equals(33);
-			}
-		};	
-		Assert.assertEquals(3, persons.filter(p).size());	
+	public void testFilter() {	
+		Assert.assertEquals(3, persons.filter(eqBy("getAge", 33)).size());	
 	}
 	
 	@Test
@@ -117,7 +91,7 @@ public class GroupTest {
 	
 	@Test
 	public void testFilterByGetter() {
-		Assert.assertEquals(2, persons.filter(Predicates.<Person>eqBy("getLastName", "Pelssers")).size());
+		Assert.assertEquals(2, persons.filter(eqBy("getLastName", "Pelssers")).size());
 	}
 	
 	@Test
@@ -139,24 +113,12 @@ public class GroupTest {
 	
 	@Test
 	public void testDoWhile() {
-		PredicateFunction<Person> p = new PredicateFunction<Person>() {
-			@Override
-			public Boolean apply(Person object) {
-				return object.getAge().equals(33);
-			}
-		};
-		persons.doWhile(p, SystemFunctions.<Person>println());
+		persons.doWhile(eqBy("getAge", 33), SystemFunctions.<Person>println());
 	}
 	
 	@Test
 	public void testDoUntill() {
-		PredicateFunction<Person> p = new PredicateFunction<Person>() {
-			@Override
-			public Boolean apply(Person object) {
-				return object.getAge().equals(38);
-			}
-		};
-		persons.doUntill(p, SystemFunctions.<Person>println());	
+		persons.doUntill(eqBy("getAge", 38), SystemFunctions.<Person>println());	
 		
 	}
 	

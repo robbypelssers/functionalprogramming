@@ -21,16 +21,16 @@ public class Predicates {
 		return new GreatherThenOrEqualPredicate<T>(number);
 	}	
 	
-	public static PredicateFunction<String> endsWith(String suffix) {
+	public static PredicateFunction<Object> endsWith(String suffix) {
 		return new EndsWithPredicate(suffix);
 	}
 	
-	public static PredicateFunction<String> startsWith(String prefix) {
+	public static PredicateFunction<Object> startsWith(String prefix) {
 		return new StartsWithPredicate(prefix);
 	}
 	
-	public static <T> PredicateFunction<T> eq(T object) {
-		return new EqualsPredicate<T>(object);
+	public static  PredicateFunction<Object> eq(Object object) {
+		return new EqualsPredicate<Object>(object);
 	}
 	
 	public static <T> PredicateFunction<T> eqBy(String getter, Object value) {
@@ -81,25 +81,25 @@ public class Predicates {
 		}
 	}	
 	
-	private static class EndsWithPredicate implements PredicateFunction<String> {
+	private static class EndsWithPredicate implements PredicateFunction<Object> {
 		private String suffix;
 		public EndsWithPredicate(String suffix) {
 			this.suffix = suffix;
 		}
 		@Override
-		public Boolean apply(String object) {
-			return object.endsWith(suffix);
+		public Boolean apply(Object object) {
+			return ((String)object).endsWith(suffix);
 		}
 	}
 	
-	private static class StartsWithPredicate implements PredicateFunction<String> {
+	private static class StartsWithPredicate implements PredicateFunction<Object> {
 		private String prefix;
 		public StartsWithPredicate(String prefix) {
 			this.prefix = prefix;
 		}
 		@Override
-		public Boolean apply(String object) {
-			return object.startsWith(prefix);
+		public Boolean apply(Object object) {
+			return ((String)object).startsWith(prefix);
 		}
 		
 	}

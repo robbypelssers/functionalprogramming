@@ -34,7 +34,8 @@ public class Group<T> implements Groupable<T> {
 		}
 	}
 		
-	public Boolean exists(final PredicateFunction<T> p) {
+	@Override
+	public Boolean exists(final PredicateFunction<Object> p) {
 		Boolean result = false;
 		for (T object : this.collection) {
 			if (p.apply(object)) {
@@ -58,7 +59,7 @@ public class Group<T> implements Groupable<T> {
 		}
 	}
 	
-	public Groupable<T> filter(final PredicateFunction<T> p) {
+	public Groupable<T> filter(final PredicateFunction<Object> p) {
 		Groupable<T> filtered = new Group<T>();
 		for (T object : this.collection) {
 			if (p.apply(object)) {
@@ -126,7 +127,7 @@ public class Group<T> implements Groupable<T> {
 	}
 
 	@Override
-	public void doWhile(final PredicateFunction<T> p, final VoidFunction<T> v) {
+	public void doWhile(final PredicateFunction<Object> p, final VoidFunction<T> v) {
 		for (Iterator<T> i = iterator(); i.hasNext();) {
 			T next = i.next();
 			if (!p.apply(next)) {
@@ -137,7 +138,7 @@ public class Group<T> implements Groupable<T> {
 	}
 	
 	@Override
-	public void doUntill(final PredicateFunction<T> p, final VoidFunction<T> v) {
+	public void doUntill(final PredicateFunction<Object> p, final VoidFunction<T> v) {
 		for (Iterator<T> i = iterator(); i.hasNext();) {
 			T next = i.next();
 			if (p.apply(next)) {

@@ -9,12 +9,12 @@ import com.pelssers.functions.VoidFunction;
 
 public interface Groupable<T> extends Iterable<T> {
 
-	Boolean exists(PredicateFunction<T> p);
+	Boolean exists(PredicateFunction<Object> p);
 	Boolean forAll(PredicateFunction<T> p);
 	void forEach(VoidFunction<T> v);
 	Groupable<T> add(T object);
 	T get(int index);
-	Groupable<T> filter(PredicateFunction<T> p);
+	Groupable<T> filter(PredicateFunction<Object> p);
 	<S> Groupable<S> map(Function<S,T> f);
 	int size();
 	Groupable<T> takeLeft(int number);
@@ -22,8 +22,8 @@ public interface Groupable<T> extends Iterable<T> {
 	Groupable<T> dropLeft(int number);
 	Groupable<T> dropRight(int number);
 	Iterator<T> iterator();
-	void doWhile(PredicateFunction<T> p, VoidFunction<T> v);
-	void doUntill(final PredicateFunction<T> p, final VoidFunction<T> v);
+	void doWhile(PredicateFunction<Object> p, VoidFunction<T> v);
+	void doUntill(final PredicateFunction<Object> p, final VoidFunction<T> v);
 	<S> Map<S, Groupable<T>> groupBy(Function<S,T> f);
 	String stringJoin(Function<String, T> f, String delimiter);
 	String stringJoin(String delimiter);
