@@ -1,6 +1,7 @@
 package com.pelssers.functions.impl;
 
 import com.pelssers.functions.PredicateFunction;
+import static com.pelssers.functions.impl.ObjectFunctions.*;
 
 public class Predicates {
 
@@ -30,6 +31,10 @@ public class Predicates {
 	
 	public static <T> PredicateFunction<T> eq(T object) {
 		return new EqualsPredicate<T>(object);
+	}
+	
+	public static <T> PredicateFunction<T> eqBy(String getter, Object value) {
+		return new EqualsByGetterPredicate<T>(getter, value);
 	}
 	
 	private static class LessThenPredicate<T extends Number> implements PredicateFunction<T> {
@@ -99,7 +104,7 @@ public class Predicates {
 		
 	}
 	
-	private static class EqualsPredicate<T> implements PredicateFunction<T>  {
+	private static class EqualsPredicate<T> implements PredicateFunction<T> {
 		private T object2;
 		public EqualsPredicate(T object2) {
 			this.object2 = object2;
@@ -108,6 +113,20 @@ public class Predicates {
 		public Boolean apply(T object1) {
 			return object2.equals(object1);
 		}
-	}		
+	}	
+	
+	private static class EqualsByGetterPredicate<T> implements PredicateFunction<T> {
+		private String getter;
+		private Object value;
+		public EqualsByGetterPredicate(String getter, Object value) {
+			this.getter = getter;
+			this.value = value;
+		}
+		@Override
+		public Boolean apply(T object) {
+			Object getterValue = get(getter).apply(object);
+			return value.equals(getterValue);
+		}
+	}
 	
 }
