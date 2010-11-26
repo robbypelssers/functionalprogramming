@@ -1,12 +1,21 @@
 package com.pelssers.collections;
 
-import static com.pelssers.functions.impl.Predicates.*;
+import static com.pelssers.functions.impl.Predicates.endsWith;
+import static com.pelssers.functions.impl.Predicates.eq;
+import static com.pelssers.functions.impl.Predicates.eqBy;
+import static com.pelssers.functions.impl.Predicates.gt;
+import static com.pelssers.functions.impl.Predicates.lt;
+import static com.pelssers.functions.impl.Predicates.startsWith;
+import static com.pelssers.functions.impl.Predicates.startsWithBy;
+
 import java.util.Map;
+
 import junit.framework.Assert;
+
 import org.junit.Before;
 import org.junit.Test;
+
 import com.pelssers.functions.Function;
-import com.pelssers.functions.PredicateFunction;
 import com.pelssers.functions.impl.SystemFunctions;
 import com.pelssers.testdata.Person;
 
@@ -71,6 +80,11 @@ public class GroupTest {
 	@Test
 	public void testFilter() {	
 		Assert.assertEquals(3, persons.filter(eqBy("getAge", 33)).size());	
+	}
+	
+	@Test
+	public void testPersonStartsWith() {
+		Assert.assertEquals(2, persons.filter(startsWithBy("getFirstName", "Ro")).size());
 	}
 	
 	@Test

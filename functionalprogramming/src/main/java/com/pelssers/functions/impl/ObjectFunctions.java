@@ -22,7 +22,7 @@ public class ObjectFunctions {
 				Method method = object.getClass().getMethod(getter);
 				value = method.invoke(object);
 			} catch(Exception e) {
-				
+				System.out.println("Exception:" + e.toString());
 			}
 			return value;
 		}

@@ -1,5 +1,6 @@
 package com.pelssers.functions.impl;
 
+import com.pelssers.functions.Function;
 import com.pelssers.functions.PredicateFunction;
 import static com.pelssers.functions.impl.ObjectFunctions.*;
 
@@ -27,6 +28,10 @@ public class Predicates {
 	
 	public static PredicateFunction<Object> startsWith(String prefix) {
 		return new StartsWithPredicate(prefix);
+	}
+	
+	public static PredicateFunction<Object> startsWithBy(String getterName, String prefix) {
+		return new StartsWithByPredicate(getterName, prefix);
 	}
 	
 	public static  PredicateFunction<Object> eq(Object object) {
@@ -101,7 +106,19 @@ public class Predicates {
 		public Boolean apply(Object object) {
 			return ((String)object).startsWith(prefix);
 		}
-		
+	}
+	
+	public static class StartsWithByPredicate implements PredicateFunction<Object> {
+		private String prefix;
+		private Function<Object, Object> getter;
+		public StartsWithByPredicate(String getterName, String prefix) {
+			this.prefix = prefix;
+			this.getter = get(getterName);
+		}
+		@Override
+		public Boolean apply(Object object) {
+			return ((String)getter.apply(object)).startsWith(prefix);
+		}
 	}
 	
 	private static class EqualsPredicate<T> implements PredicateFunction<T> {
