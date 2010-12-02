@@ -20,6 +20,7 @@ public class RichCollection<T> implements RichIterable<T> {
 	private RichCollection() {
 		elements = new ArrayList<T>();		
 	}
+	
 
 	public RichCollection(Iterable<T> iterable) {
         this();
