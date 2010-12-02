@@ -8,7 +8,7 @@ This project was started to be able to provide typical higher-order functions fo
 Let's take a use case where you need to check which numbers are between 2 and 5.
 
 == Imperative Java style ==
-List<Integer> numbers = new ArrayList<Integer>();
+List<`Integer> numbers = new ArrayList<`Integer>();
 numbers.add(1);
 numbers.add(2);
 numbers.add(3);
