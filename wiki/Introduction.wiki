@@ -1,0 +1,7 @@
+= Introduction =
+This project was started to be able to provide typical higher-order functions for Iterables like:
+  * filtering
+  * mapping 
+  * slicing
+  * ...
+
