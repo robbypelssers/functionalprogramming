@@ -8,7 +8,5 @@ public class ConcatFunction implements Function2<String, String, String> {
 	public String apply(String object1, String object2) {
 		return object1.concat(object2);
 	}
-
-
-
+	
 }

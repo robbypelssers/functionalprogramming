@@ -1,5 +1,6 @@
 package com.pelssers.functions;
 
+import com.pelssers.functions.string.ConcatFunction;
 import com.pelssers.functions.string.EndsWithFunction;
 import com.pelssers.functions.string.SplitFunction;
 import com.pelssers.functions.string.StartsWithFunction;
@@ -36,5 +37,9 @@ public class StringFunctions {
 	public static Predicate<String> endsWith(String suffix) {
 		return new EndsWithFunction(suffix);
 	}	
+	
+	public static Function2<String, String, String> concat() {
+		return new ConcatFunction();
+	}
 	
 }

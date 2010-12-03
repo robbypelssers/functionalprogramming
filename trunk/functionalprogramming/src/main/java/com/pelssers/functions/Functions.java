@@ -12,6 +12,7 @@ import com.pelssers.functions.iterable.GroupByFunction;
 import com.pelssers.functions.iterable.MapFunction;
 import com.pelssers.functions.iterable.PartitionFunction;
 import com.pelssers.functions.iterable.PollFunction;
+import com.pelssers.functions.iterable.PopFunction;
 import com.pelssers.functions.iterable.SplitAtFunction;
 import com.pelssers.functions.iterable.TakeLeftFunction;
 import com.pelssers.functions.iterable.TakeRightFunction;
@@ -97,6 +98,10 @@ public class Functions {
 	public static <T> Function<P2<T, RichIterable<T>>, Iterable<T>> poll() {
 		return new PollFunction<T>();
 	}
+	
+	public static <T> Function<P2<T, RichIterable<T>>, Iterable<T>> pop() {
+		return new PopFunction<T>();
+	}	
 	
 	public static <T> Function3<T, Iterable<T>, T, Function2<T,T,T>> foldLeft() {
 		return new FoldLeftFunction<T>();

@@ -142,16 +142,12 @@ public class RichIterator<T> implements RichIterable<T> {
 	
 	@Override
 	public T first() {
-	    Iterator<T>  i = dropRight(size() - 1).iterator();
-	    if (i.hasNext()) return i.next();
-	    return null;	
+		return isEmpty() ? null : elements.get(0);	
 	}
 	
 	@Override	
 	public T last() {
-	    Iterator<T>  i = dropLeft(size() -1).iterator();
-	    if (i.hasNext()) return i.next();
-	    return null;
+		return isEmpty() ? null : elements.get(size() - 1);
 	}
 	
 	@Override
