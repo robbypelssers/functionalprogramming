@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.pelssers.collections.RichCollection;
+import com.pelssers.collections.RichIterator;
 import com.pelssers.lang.Function2;
 import com.pelssers.lang.RichIterable;
 
@@ -18,7 +18,7 @@ public class TakeLeftFunction<T> implements Function2<RichIterable<T>,Iterable<T
         	result.add(i.next());
         	index++;        	
         }		
-		return RichCollection.fromIterable(result);
+		return RichIterator.fromIterable(result);
 	}
 
 }

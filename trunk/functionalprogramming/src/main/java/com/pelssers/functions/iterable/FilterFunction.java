@@ -3,7 +3,7 @@ package com.pelssers.functions.iterable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pelssers.collections.RichCollection;
+import com.pelssers.collections.RichIterator;
 import com.pelssers.lang.Function2;
 import com.pelssers.lang.Predicate;
 import com.pelssers.lang.RichIterable;
@@ -17,6 +17,6 @@ public class FilterFunction<T> implements Function2<RichIterable<T>,Iterable<T>,
 				list.add(object);
 			}
 		}
-		return RichCollection.fromIterable(list);
+		return RichIterator.fromIterable(list);
 	}
 }

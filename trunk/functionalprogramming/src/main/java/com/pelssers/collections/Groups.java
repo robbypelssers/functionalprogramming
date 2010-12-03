@@ -27,7 +27,7 @@ public class Groups<S,T> implements GroupableComposite<S, T> {
 
 	@Override
 	public RichIterable<Groupable<S, T>> getGroups() {
-		return RichCollection.fromIterable(groups.values());
+		return RichIterator.fromIterable(groups.values());
 	}
 
 }

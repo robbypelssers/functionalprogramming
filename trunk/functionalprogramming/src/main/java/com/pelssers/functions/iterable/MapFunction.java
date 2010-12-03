@@ -3,7 +3,7 @@ package com.pelssers.functions.iterable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pelssers.collections.RichCollection;
+import com.pelssers.collections.RichIterator;
 import com.pelssers.lang.Function;
 import com.pelssers.lang.Function2;
 import com.pelssers.lang.RichIterable;
@@ -15,6 +15,6 @@ public class MapFunction<S,T> implements Function2<RichIterable<S>,Iterable<T>, 
 		for (T object : iterable) {
 			list.add(f.apply(object));
 		}
-		return RichCollection.fromIterable(list);
+		return RichIterator.fromIterable(list);
 	}
 }

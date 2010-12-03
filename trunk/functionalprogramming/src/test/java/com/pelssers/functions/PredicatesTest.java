@@ -8,7 +8,7 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.pelssers.collections.RichCollection;
+import com.pelssers.collections.RichIterator;
 import com.pelssers.domain.Person;
 import com.pelssers.lang.Groupable;
 import com.pelssers.lang.P2;
@@ -21,20 +21,18 @@ public class PredicatesTest {
 	
 	@Before
 	public void setup() {
-		numbers = new RichCollection<Integer>(listOf(2, 4, 6, 8, 7, 5, 10, 7, 6, 5, 11, 3));
-		persons = new RichCollection<Person>(
-				     listOf(
-				    		new Person("Robby", "Pelssers", 33, false),
-				    		new Person("Robert", "Janssen", 36, false),
-				    		new Person("Davy", "Pelssers", 33, true),
-				    		new Person("Ron", "Peters", 35, false),
-				    		new Person("David", "Beckham", 38, true),
-				    		new Person("Jan", "Hermans", 33, false),
-				    		new Person("John", "Hendrix", 28, true),
-				    		new Person("John", "Vissers", 30, true),
-				    		new Person("Dimitri", "Janssen", 39, false),
-				    		new Person("Jan", "Peters", 39, true)
-				     )
+		numbers = new RichIterator<Integer>(2, 4, 6, 8, 7, 5, 10, 7, 6, 5, 11, 3);
+		persons = new RichIterator<Person>(
+				      new Person("Robby", "Pelssers", 33, false),
+				      new Person("Robert", "Janssen", 36, false),
+				      new Person("Davy", "Pelssers", 33, true),
+				      new Person("Ron", "Peters", 35, false),
+				      new Person("David", "Beckham", 38, true),
+				      new Person("Jan", "Hermans", 33, false),
+				      new Person("John", "Hendrix", 28, true),
+				      new Person("John", "Vissers", 30, true),
+				      new Person("Dimitri", "Janssen", 39, false),
+				      new Person("Jan", "Peters", 39, true)
 				  );
 	}
 	
