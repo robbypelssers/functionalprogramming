@@ -170,4 +170,9 @@ public class RichIterator<T> implements RichIterable<T> {
 		return Functions.<T>foldLeft().apply(elements, start, binop);
 	}
 	
+	@Override
+	public T foldRight(T start, Function2<T,T,T> binop) {
+		return Functions.<T>foldRight().apply(elements, start, binop);
+	}	
+	
 }
