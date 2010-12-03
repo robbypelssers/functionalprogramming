@@ -25,7 +25,7 @@ public class Group<S,T> implements Groupable<S, T> {
 
 	@Override
 	public RichIterable<T> getElements() {
-		return RichCollection.fromIterable(elements);
+		return RichIterator.fromIterable(elements);
 	}
 
 	@Override

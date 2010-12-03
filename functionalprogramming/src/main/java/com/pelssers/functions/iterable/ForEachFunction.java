@@ -1,6 +1,6 @@
 package com.pelssers.functions.iterable;
 
-import com.pelssers.collections.RichCollection;
+import com.pelssers.collections.RichIterator;
 import com.pelssers.lang.Effect;
 import com.pelssers.lang.Function2;
 import com.pelssers.lang.RichIterable;
@@ -12,7 +12,7 @@ public class ForEachFunction<T> implements Function2<RichIterable<T>,Iterable<T>
 		for (T object : iterable) {
 			effect.apply(object);
 		}
-		return RichCollection.fromIterable(iterable);
+		return RichIterator.fromIterable(iterable);
 	}
 	
 }

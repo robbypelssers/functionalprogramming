@@ -3,7 +3,7 @@ package com.pelssers.functions.iterable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pelssers.collections.RichCollection;
+import com.pelssers.collections.RichIterator;
 import com.pelssers.functions.Functions;
 import com.pelssers.lang.Effect;
 import com.pelssers.lang.Function2;
@@ -25,7 +25,7 @@ public class TakeWhileFunction<T> implements Function2<RichIterable<T>, Iterable
 					}
 				}
         );
-		return RichCollection.fromIterable(result);
+		return RichIterator.fromIterable(result);
 	}
 	
 }

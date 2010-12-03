@@ -1,6 +1,6 @@
 package com.pelssers.functions.iterable;
 
-import com.pelssers.collections.RichCollection;
+import com.pelssers.collections.RichIterator;
 import com.pelssers.lang.Effect;
 import com.pelssers.lang.Function3;
 import com.pelssers.lang.Predicate;
@@ -14,7 +14,7 @@ public class DoWhileFunction<T> implements Function3<RichIterable<T>,Iterable<T>
 			if (!predicate.apply(object)) break;
 			effect.apply(object);
 		}
-		return RichCollection.fromIterable(iterable);
+		return RichIterator.fromIterable(iterable);
 	}
 
 

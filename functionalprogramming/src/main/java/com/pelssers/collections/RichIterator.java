@@ -13,35 +13,35 @@ import com.pelssers.lang.P2;
 import com.pelssers.lang.Predicate;
 import com.pelssers.lang.RichIterable;
 
-public class RichCollection<T> implements RichIterable<T> {
+public class RichIterator<T> implements RichIterable<T> {
 
 	private final List<T> elements;
 	
-	private RichCollection() {
+	private RichIterator() {
 		elements = new ArrayList<T>();		
 	}
 	
 
-	public RichCollection(Iterable<T> iterable) {
+	public RichIterator(Iterable<T> iterable) {
         this();
 		for (T object : iterable) {
 			elements.add(object);
 		}
 	}
 	
-	public RichCollection(T[] array) {
+	public RichIterator(T... objects) {
 		this();
-        for (T object : array) {
+        for (T object : objects) {
         	elements.add(object);
-        }
+        }		
 	}
-	
+		
 	public static <T> RichIterable<T> fromIterable(Iterable<T> iterable) {
-		return new RichCollection<T>(iterable);
+		return new RichIterator<T>(iterable);
 	}
 	
 	public static <T> RichIterable<T> fromArray(T[] array) {
-		return new RichCollection<T>(array);
+		return new RichIterator<T>(array);
 	}
 		
 	@Override
