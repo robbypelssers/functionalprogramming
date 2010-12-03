@@ -10,7 +10,7 @@ public class PollFunction<T> implements Function<P2<T, RichIterable<T>>, Iterabl
 	@Override
 	public P2<T, RichIterable<T>> apply(Iterable<T> iterable) {
 		RichIterable<T> richIterable = RichIterator.fromIterable(iterable);
-		return new P2<T, RichIterable<T>>(richIterable.first(), richIterable.dropLeft(1));
+		return new P2<T, RichIterable<T>>(richIterable.last(), richIterable.dropRight(1));
 	}
 
 }

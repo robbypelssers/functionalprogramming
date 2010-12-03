@@ -14,7 +14,7 @@ public class FoldLeftFunction<T> implements Function3<T, Iterable<T>, T, Functio
 		T result = start;
 		RichIterable<T> richIterator = RichIterator.fromIterable(iterable);
 		while (richIterator.size() > 0) {
-			P2<T, RichIterable<T>> pair = Functions.<T>poll().apply(richIterator);
+			P2<T, RichIterable<T>> pair = Functions.<T>pop().apply(richIterator);
 			result = binop.apply(result, pair.get1());
 			richIterator = pair.get2();
 		}
