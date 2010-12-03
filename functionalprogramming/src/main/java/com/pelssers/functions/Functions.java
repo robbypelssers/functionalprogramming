@@ -6,10 +6,12 @@ import com.pelssers.functions.iterable.DoWhileFunction;
 import com.pelssers.functions.iterable.DropLeftFunction;
 import com.pelssers.functions.iterable.DropRightFunction;
 import com.pelssers.functions.iterable.FilterFunction;
+import com.pelssers.functions.iterable.FoldLeftFunction;
 import com.pelssers.functions.iterable.ForEachFunction;
 import com.pelssers.functions.iterable.GroupByFunction;
 import com.pelssers.functions.iterable.MapFunction;
 import com.pelssers.functions.iterable.PartitionFunction;
+import com.pelssers.functions.iterable.PollFunction;
 import com.pelssers.functions.iterable.SplitAtFunction;
 import com.pelssers.functions.iterable.TakeLeftFunction;
 import com.pelssers.functions.iterable.TakeRightFunction;
@@ -92,5 +94,12 @@ public class Functions {
 		return new SplitAtFunction<T>();
 	}
 	
+	public static <T> Function<P2<T, RichIterable<T>>, Iterable<T>> poll() {
+		return new PollFunction<T>();
+	}
+	
+	public static <T> Function3<T, Iterable<T>, T, Function2<T,T,T>> foldLeft() {
+		return new FoldLeftFunction<T>();
+	}
 
 }
