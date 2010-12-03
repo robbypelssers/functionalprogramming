@@ -8,6 +8,7 @@ import com.pelssers.functions.Functions;
 import com.pelssers.functions.Predicates;
 import com.pelssers.lang.Effect;
 import com.pelssers.lang.Function;
+import com.pelssers.lang.Function2;
 import com.pelssers.lang.Groupable;
 import com.pelssers.lang.P2;
 import com.pelssers.lang.Predicate;
@@ -166,6 +167,11 @@ public class RichIterator<T> implements RichIterable<T> {
 	@Override
 	public P2<RichIterable<T>, RichIterable<T>> splitAt(Integer index) {
 		return Functions.<T>splitAt().apply(elements, index);
+	}
+	
+	@Override
+	public T foldLeft(T start, Function2<T,T,T> binop) {
+		return Functions.<T>foldLeft().apply(elements, start, binop);
 	}
 	
 }

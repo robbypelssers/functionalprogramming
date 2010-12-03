@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import com.pelssers.collections.RichIterator;
 import com.pelssers.domain.Person;
+import com.pelssers.lang.Function2;
 import com.pelssers.lang.Groupable;
 import com.pelssers.lang.P2;
 import com.pelssers.lang.RichIterable;
@@ -193,6 +194,21 @@ public class PredicatesTest {
 	@Test
 	public void testStartsWith() {
 		Assert.assertEquals(3, persons.filter(property(startsWith("Ro"), Person._getFirstName())).size());
+	}
+	
+	@Test
+	public void testFoldLeft() {
+		Integer sum = numbers.foldLeft(
+				0, 
+                new Function2<Integer,Integer, Integer>() {
+					@Override
+					public Integer apply(Integer n1, Integer n2) {
+						return n1 + n2;
+					}
+					
+				}
+		);
+	    Assert.assertEquals(Integer.valueOf(74), sum);
 	}
 	
 }
