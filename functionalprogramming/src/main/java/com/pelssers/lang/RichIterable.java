@@ -157,4 +157,13 @@ public interface RichIterable<T> extends Iterable<T> {
 	 */
 	T foldLeft(T start, Function2<T,T,T> binop);
 	
+	/**
+	 * Applies a binary operator to a start value and all elements of this iterable collection, going right to left.
+	 * @param start
+	 * @param f : binary operator 
+	 * @return the result of inserting op between consecutive elements of this iterable, 
+	 *     going right to left with the start value on the right
+	 */	
+	T foldRight(T start, Function2<T,T,T> binop);
+	
 }

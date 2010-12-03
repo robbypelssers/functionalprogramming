@@ -211,4 +211,19 @@ public class PredicatesTest {
 	    Assert.assertEquals(Integer.valueOf(74), sum);
 	}
 	
+	@Test
+	public void testFoldRight() {
+		Integer sum = numbers.foldRight(
+				0, 
+                new Function2<Integer,Integer, Integer>() {
+					@Override
+					public Integer apply(Integer n1, Integer n2) {
+						return n1 + n2;
+					}
+					
+				}
+		);
+	    Assert.assertEquals(Integer.valueOf(74), sum);
+	}	
+	
 }

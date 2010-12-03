@@ -7,6 +7,7 @@ import com.pelssers.functions.iterable.DropLeftFunction;
 import com.pelssers.functions.iterable.DropRightFunction;
 import com.pelssers.functions.iterable.FilterFunction;
 import com.pelssers.functions.iterable.FoldLeftFunction;
+import com.pelssers.functions.iterable.FoldRightFunction;
 import com.pelssers.functions.iterable.ForEachFunction;
 import com.pelssers.functions.iterable.GroupByFunction;
 import com.pelssers.functions.iterable.MapFunction;
@@ -106,5 +107,9 @@ public class Functions {
 	public static <T> Function3<T, Iterable<T>, T, Function2<T,T,T>> foldLeft() {
 		return new FoldLeftFunction<T>();
 	}
+	
+	public static <T> Function3<T, Iterable<T>, T, Function2<T,T,T>> foldRight() {
+		return new FoldRightFunction<T>();
+	}	
 
 }
