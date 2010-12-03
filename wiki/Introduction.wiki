@@ -28,7 +28,7 @@ return filtered;
 
 == Functional Java style ==
 {{{
-RichIterable<Integer> numbers = new RichCollection<Integer>(listOf(1, 2, 3, 4, 5, 6));
+RichIterable<Integer> numbers = new RichIterator<Integer>(1, 2, 3, 4, 5, 6);
 RichIterable<Integer> filtered = numbers.filter(between(2, 5));
 }}}
 
