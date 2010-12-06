@@ -131,18 +131,18 @@ public class PredicatesTest {
 		Assert.assertEquals(Boolean.TRUE, firstNames.contains("Robby"));
 	}
 	
-//	@Test
-//	public void testGroupByAge() {
-//		RichIterable<Groupable<Integer, Person>> groups = persons.groupBy(Person._getAge());
-//		Assert.assertEquals(7, groups.size());
-//		for (Groupable<Integer, Person> group : groups) {
-//			System.out.println("***************");
-//			System.out.println("key=" + group.getGroupingKey());
-//			for (Person person : group.getElements()) {
-//				System.out.println(person);
-//			}
-//		}
-//	}
+	@Test
+	public void testGroupByAge() {
+		RichIterable<Groupable<Integer, Person>> groups = persons.groupBy(Person._getAge());
+		Assert.assertEquals(7, groups.size());
+		for (Groupable<Integer, Person> group : groups) {
+			System.out.println("***************");
+			System.out.println("key=" + group.getGroupingKey());
+			for (Person person : group.getElements()) {
+				System.out.println(person);
+			}
+		}
+	}
 	
 	@Test
 	public void testGroupByIsMarriedAndLastName() {
