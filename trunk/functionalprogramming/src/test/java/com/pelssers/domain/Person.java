@@ -50,7 +50,7 @@ public class Person {
 	}
 	
 	public String toString() {
-		return getFirstName() + " " + getLastName();
+		return getFirstName() + " " + getLastName() + ": " + getAge() + ", " + (getIsMarried() ? "married" : "unmarried");
 	}
 	
 	public static Function<String, Person> _getFirstName() {

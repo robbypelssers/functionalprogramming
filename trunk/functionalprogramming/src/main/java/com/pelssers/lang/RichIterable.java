@@ -39,6 +39,13 @@ public interface RichIterable<T> extends Iterable<T> {
 	 */
 	<S> RichIterable<Groupable<S, T>> groupBy(Function<S,T> f);
 	
+    /**
+     * @param f1: f<P,T> which returns the primary groupingkey of type <P>
+     * @param f2: f<S,T> which returns the secondary groupingkey of type <S>
+     * @return a new RichIterable containing Groupable<P2<P, S>, T>
+     */
+	<P,S> RichIterable<Groupable<P2<P, S>, T>> groupBy(Function<P,T> f1,Function<S,T> f2);
+	
 	/**
 	 * @return a new RichIterable containing distinct objects meaning that there exists no combination of 
 	 * e1 and e2 where e1.equals(e2) 
