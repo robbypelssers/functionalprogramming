@@ -10,6 +10,7 @@ import com.pelssers.functions.iterable.FoldLeftFunction;
 import com.pelssers.functions.iterable.FoldRightFunction;
 import com.pelssers.functions.iterable.ForEachFunction;
 import com.pelssers.functions.iterable.GroupByFunction;
+import com.pelssers.functions.iterable.GroupByFunction2;
 import com.pelssers.functions.iterable.MapFunction;
 import com.pelssers.functions.iterable.PartitionFunction;
 import com.pelssers.functions.iterable.PollFunction;
@@ -42,6 +43,10 @@ public class Functions {
 		
 	public static <S,T> Function2<RichIterable<Groupable<S, T>>, Iterable<T>, Function<S,T>> groupBy() {
 		return new GroupByFunction<S, T>();
+	}
+	
+	public static <P,S,T> Function3<RichIterable<Groupable<P2<P,S>, T>>, Iterable<T>, Function<P,T>, Function<S,T>> groupBy2() {
+		return new GroupByFunction2<P, S, T>();
 	}
 	
 	public static <T> Function<RichIterable<T>,Iterable<T>> distinct() {
@@ -111,5 +116,7 @@ public class Functions {
 	public static <T> Function3<T, Iterable<T>, T, Function2<T,T,T>> foldRight() {
 		return new FoldRightFunction<T>();
 	}	
+	
+
 
 }

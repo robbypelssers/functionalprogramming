@@ -27,7 +27,7 @@ public class PredicatesTest {
 				      new Person("Robby", "Pelssers", 33, false),
 				      new Person("Robert", "Janssen", 36, false),
 				      new Person("Davy", "Pelssers", 33, true),
-				      new Person("Ron", "Peters", 35, false),
+				      new Person("Ron", "Peters", 35, true),
 				      new Person("David", "Beckham", 38, true),
 				      new Person("Jan", "Hermans", 33, false),
 				      new Person("John", "Hendrix", 28, true),
@@ -92,7 +92,7 @@ public class PredicatesTest {
 	@Test
 	public void testPropertyEqualToFilter_byIsMarried() {
 		RichIterable<Person> marriedPersons = persons.filter(property(equalTo(true), Person._isMarried()));
-		Assert.assertEquals(5, marriedPersons.size());
+		Assert.assertEquals(6, marriedPersons.size());
 	}
 	
 	@Test
@@ -131,17 +131,23 @@ public class PredicatesTest {
 		Assert.assertEquals(Boolean.TRUE, firstNames.contains("Robby"));
 	}
 	
+//	@Test
+//	public void testGroupByAge() {
+//		RichIterable<Groupable<Integer, Person>> groups = persons.groupBy(Person._getAge());
+//		Assert.assertEquals(7, groups.size());
+//		for (Groupable<Integer, Person> group : groups) {
+//			System.out.println("***************");
+//			System.out.println("key=" + group.getGroupingKey());
+//			for (Person person : group.getElements()) {
+//				System.out.println(person);
+//			}
+//		}
+//	}
+	
 	@Test
-	public void testGroupByAge() {
-		RichIterable<Groupable<Integer, Person>> groups = persons.groupBy(Person._getAge());
-		Assert.assertEquals(7, groups.size());
-		for (Groupable<Integer, Person> group : groups) {
-			System.out.println("***************");
-			System.out.println("key=" + group.getGroupingKey());
-			for (Person person : group.getElements()) {
-				System.out.println(person);
-			}
-		}
+	public void testGroupByIsMarriedAndLastName() {
+		RichIterable<Groupable<P2<Boolean, String>, Person>> groups = persons.groupBy(Person._isMarried(),Person._getLastName());	
+		Assert.assertEquals(8, groups.size());
 	}
 	
 	@Test

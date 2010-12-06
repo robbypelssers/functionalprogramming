@@ -79,6 +79,10 @@ public class RichIterator<T> implements RichIterable<T> {
     	return Functions.<S,T>groupBy().apply(elements, f);
     }
 	
+	public <P,S> RichIterable<Groupable<P2<P, S>, T>> groupBy(Function<P,T> f1,Function<S,T> f2) {
+		return Functions.<P,S,T>groupBy2().apply(elements, f1, f2);
+	}
+	
 	@Override
 	public RichIterable<T> distinct() {
 		return Functions.<T>distinct().apply(elements);
