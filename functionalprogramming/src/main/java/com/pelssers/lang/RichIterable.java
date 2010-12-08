@@ -1,5 +1,6 @@
 package com.pelssers.lang;
 
+import java.util.Comparator;
 
 public interface RichIterable<T> extends Iterable<T> {
 
@@ -172,5 +173,19 @@ public interface RichIterable<T> extends Iterable<T> {
 	 *     going right to left with the start value on the right
 	 */	
 	T foldRight(T start, Function2<T,T,T> binop);
+	
+	/**
+	 * @param comparator
+	 * @return a new RichIterable sorted by comparator
+	 */
+	RichIterable<T> sort(Comparator<T> comparator);
+	
+
+    /**
+     * @param f
+     * @param comparator
+     * @return
+     */
+	<S> RichIterable<T> sortBy(Function<S,T> f, Comparator<S> comparator);
 	
 }

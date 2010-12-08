@@ -1,5 +1,9 @@
 package com.pelssers.functions;
 
+import java.util.Comparator;
+
+import com.pelssers.functions.iterable.ComparableSortByFunction;
+import com.pelssers.functions.iterable.ComparableSortFunction;
 import com.pelssers.functions.iterable.DistinctFunction;
 import com.pelssers.functions.iterable.DoUntillFunction;
 import com.pelssers.functions.iterable.DoWhileFunction;
@@ -12,6 +16,8 @@ import com.pelssers.functions.iterable.ForEachFunction;
 import com.pelssers.functions.iterable.GroupByFunction;
 import com.pelssers.functions.iterable.GroupByFunction2;
 import com.pelssers.functions.iterable.MapFunction;
+import com.pelssers.functions.iterable.NaturalSortByFunction;
+import com.pelssers.functions.iterable.NaturalSortFunction;
 import com.pelssers.functions.iterable.PartitionFunction;
 import com.pelssers.functions.iterable.PollFunction;
 import com.pelssers.functions.iterable.PopFunction;
@@ -115,8 +121,22 @@ public class Functions {
 	
 	public static <T> Function3<T, Iterable<T>, T, Function2<T,T,T>> foldRight() {
 		return new FoldRightFunction<T>();
-	}	
+	}
 	
-
-
+	public static <T extends Comparable<T>> Function<RichIterable<T>,Iterable<T>> naturalSort() {
+		return new NaturalSortFunction<T>();
+	}
+	
+	public static <T> Function2<RichIterable<T>, Iterable<T>, Comparator<T>> comparableSort() {
+		return new ComparableSortFunction<T>();
+	}
+	
+	public static <S extends Comparable<S>,T> Function2<RichIterable<T>, Iterable<T>, Function<S,T>> naturalSortBy() {
+		return new NaturalSortByFunction<S, T>();
+	}
+	
+	public static <S,T> Function3<RichIterable<T>, Iterable<T>, Function<S,T>, Comparator<S>> comparableSortBy() {
+		return new ComparableSortByFunction<S, T>();
+	}
+	
 }
