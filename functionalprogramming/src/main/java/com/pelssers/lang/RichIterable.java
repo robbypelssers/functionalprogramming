@@ -188,4 +188,6 @@ public interface RichIterable<T> extends Iterable<T> {
      */
 	<S> RichIterable<T> sortBy(Function<S,T> f, Comparator<S> comparator);
 	
+	<S extends Comparable<S>> RichIterable<T> sortBy(Function<S,T> f);
+	
 }
