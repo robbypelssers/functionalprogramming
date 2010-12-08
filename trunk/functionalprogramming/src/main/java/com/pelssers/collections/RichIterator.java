@@ -1,6 +1,7 @@
 package com.pelssers.collections;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -178,5 +179,15 @@ public class RichIterator<T> implements RichIterable<T> {
 	public T foldRight(T start, Function2<T,T,T> binop) {
 		return Functions.<T>foldRight().apply(elements, start, binop);
 	}	
+	
+	@Override
+	public RichIterable<T> sort(Comparator<T> comparator) {
+		return Functions.<T>comparableSort().apply(elements, comparator);
+	}
+	
+	@Override
+	public <S> RichIterable<T> sortBy(Function<S,T> f, Comparator<S> comparator) {
+		return Functions.<S,T>comparableSortBy().apply(elements, f, comparator);
+	}
 	
 }
