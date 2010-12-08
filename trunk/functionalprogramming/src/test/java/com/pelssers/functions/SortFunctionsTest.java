@@ -1,26 +1,26 @@
 package com.pelssers.functions;
 
-import java.util.List;
-
 import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.pelssers.collections.CollectionsUtil;
+import com.pelssers.collections.RichComparator;
+import com.pelssers.collections.RichIterator;
 import com.pelssers.domain.Person;
+import com.pelssers.lang.RichComparable;
 import com.pelssers.lang.RichIterable;
 
 public class SortFunctionsTest {
 
 	
-	private List<Integer> numbers;
-	private List<Person> persons;
+	private RichComparable<Integer> numbers;
+	private RichIterable<Person> persons;
 	
 	@Before
 	public void setup() {
-		numbers = CollectionsUtil.listOf(4, 6, 8, 2, 7, 5, 10, 7, 6, 5, 11, 3);	
-		persons = CollectionsUtil.listOf(
+		numbers = new RichComparator<Integer>(4, 6, 8, 2, 7, 5, 10, 7, 6, 5, 11, 3);	
+		persons = new RichIterator<Person>(
 			      new Person("Robby", "Pelssers", 33, false),
 			      new Person("Robert", "Janssen", 36, false),
 			      new Person("Davy", "Pelssers", 33, true),
@@ -35,16 +35,30 @@ public class SortFunctionsTest {
 	}
 	
 	@Test
-	public void testNaturalSort() {
+	public void testNaturalSortFunctionApply() {
 		RichIterable<Integer> sortedNumbers = Functions.<Integer>naturalSort().apply(numbers);
 		Assert.assertEquals(new Integer(2), sortedNumbers.first());
 		Assert.assertEquals(new Integer(11), sortedNumbers.last());
 	}
 	
 	@Test
-	public void testNaturalSortBy() {
+	public void testNaturalSort() {
+		RichComparable<Integer> sortedNumbers = numbers.sort();
+		Assert.assertEquals(new Integer(2), sortedNumbers.first());
+		Assert.assertEquals(new Integer(11), sortedNumbers.last());		
+	}
+	
+	@Test
+	public void testNaturalSortByFunctionApply() {
         RichIterable<Person> sortedByFirstName = Functions.<String, Person>naturalSortBy().apply(persons, Person._getFirstName());
         Assert.assertEquals("David", sortedByFirstName.first().getFirstName());
         Assert.assertEquals("Ron", sortedByFirstName.last().getFirstName());        
+	}
+	
+	@Test
+	public void testNaturalSortBy() {
+        RichIterable<Person> sortedByFirstName = persons.sortBy(Person._getFirstName());
+        Assert.assertEquals("David", sortedByFirstName.first().getFirstName());
+        Assert.assertEquals("Ron", sortedByFirstName.last().getFirstName());   		
 	}
 }

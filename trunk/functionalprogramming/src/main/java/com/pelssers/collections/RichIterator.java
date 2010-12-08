@@ -17,7 +17,7 @@ import com.pelssers.lang.RichIterable;
 
 public class RichIterator<T> implements RichIterable<T> {
 
-	private final List<T> elements;
+	final protected List<T> elements;
 	
 	private RichIterator() {
 		elements = new ArrayList<T>();		
@@ -188,6 +188,10 @@ public class RichIterator<T> implements RichIterable<T> {
 	@Override
 	public <S> RichIterable<T> sortBy(Function<S,T> f, Comparator<S> comparator) {
 		return Functions.<S,T>comparableSortBy().apply(elements, f, comparator);
+	}
+	
+	public <S extends Comparable<S>> RichIterable<T> sortBy(Function<S,T> f) {
+		return Functions.<S,T>naturalSortBy().apply(elements, f);
 	}
 	
 }

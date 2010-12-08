@@ -35,6 +35,7 @@ import com.pelssers.lang.Function5;
 import com.pelssers.lang.Groupable;
 import com.pelssers.lang.P2;
 import com.pelssers.lang.Predicate;
+import com.pelssers.lang.RichComparable;
 import com.pelssers.lang.RichIterable;
 
 
@@ -123,7 +124,7 @@ public class Functions {
 		return new FoldRightFunction<T>();
 	}
 	
-	public static <T extends Comparable<T>> Function<RichIterable<T>,Iterable<T>> naturalSort() {
+	public static <T extends Comparable<T>> Function<RichComparable<T>,Iterable<T>> naturalSort() {
 		return new NaturalSortFunction<T>();
 	}
 	
