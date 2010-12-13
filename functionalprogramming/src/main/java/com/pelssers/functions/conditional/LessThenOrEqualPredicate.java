@@ -1,6 +1,6 @@
 package com.pelssers.functions.conditional;
 
-public class LessThenOrEqualPredicate<T extends Number> extends AbstractConditionPredicate<T> {
+public class LessThenOrEqualPredicate<T extends Comparable<T>> extends AbstractConditionPredicate<T> {
 	
     public LessThenOrEqualPredicate(T value) {
     	super(value);
@@ -8,7 +8,7 @@ public class LessThenOrEqualPredicate<T extends Number> extends AbstractConditio
  
 	@Override
 	public Boolean apply(T object) {
-		return object.doubleValue() <= getValue().doubleValue();
+		return object.compareTo(getValue()) <= 0;
 	}    
     
 }
