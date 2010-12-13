@@ -6,6 +6,7 @@ import com.pelssers.functions.conditional.LessThenPredicate;
 import com.pelssers.functions.iterable.ExistsPredicate;
 import com.pelssers.functions.iterable.ForAllPredicate;
 import com.pelssers.functions.iterable.InPredicate;
+import com.pelssers.functions.iterable.IsRangePredicate;
 import com.pelssers.functions.logical.AndPredicate;
 import com.pelssers.functions.logical.NotPredicate;
 import com.pelssers.functions.logical.OrPredicate;
@@ -47,8 +48,8 @@ public class Predicates {
 	
 	public static <T> CompositePredicate<T> And() {
 		return new AndPredicate<T>();
-	}	
-	
+	}
+		
 	public static <T> CompositePredicate<T> Or() {
 		return new OrPredicate<T>();
 	}
@@ -80,4 +81,8 @@ public class Predicates {
 	public static <T extends Comparable<T>> Predicate<T> between(T value1, T value2) {
 		return Predicates.<T>And().add(gte(value1)).add(lte(value2));
 	} 	
+	
+	public static  <T extends Comparable<T>> Predicate<Iterable<T>> isRange() {
+		return new IsRangePredicate<T>();
+	}
 }
