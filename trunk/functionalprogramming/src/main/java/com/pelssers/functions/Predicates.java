@@ -61,23 +61,23 @@ public class Predicates {
 		return new ForAllPredicate<T>();
 	}
 	
-	public static <T extends Number> Predicate<T> lt(T value) {
+	public static <T extends Comparable<T>> Predicate<T> lt(T value) {
 		return new LessThenPredicate<T>(value);
 	}
 	
-	public static <T extends Number> Predicate<T> lte(T value) {
+	public static <T extends Comparable<T>> Predicate<T> lte(T value) {
 	    return new LessThenOrEqualPredicate<T>(value);
     }	
 	
-	public static <T extends Number> Predicate<T> gt(T value) {
+	public static <T extends Comparable<T>> Predicate<T> gt(T value) {
 	    return not(lte(value));
     }
 
-    public static <T extends Number> Predicate<T> gte(T value) {
+    public static <T extends Comparable<T>> Predicate<T> gte(T value) {
 	    return not(lt(value));
     }
     
-	public static <T extends Number> Predicate<T> between(T value1, T value2) {
+	public static <T extends Comparable<T>> Predicate<T> between(T value1, T value2) {
 		return Predicates.<T>And().add(gte(value1)).add(lte(value2));
 	} 	
 }
