@@ -12,6 +12,7 @@ public abstract class AbstractCompositePredicate<T> implements CompositePredicat
 	public AbstractCompositePredicate() {
 		this.predicates = new ArrayList<Predicate<T>>();	
 	}
+	
 	@Override
 	public CompositePredicate<T> add(Predicate<T> predicate) {
 		this.predicates.add(predicate);

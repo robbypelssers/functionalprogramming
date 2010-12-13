@@ -5,6 +5,7 @@ import com.pelssers.functions.Predicates;
 import com.pelssers.lang.Predicate;
 
 public class AndPredicate<T> extends AbstractCompositePredicate<T> {
+		
 	@Override
 	public Boolean apply(final T object) {
 		return Predicates.<Predicate<T>>forAll().apply(
