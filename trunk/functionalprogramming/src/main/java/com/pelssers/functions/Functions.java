@@ -88,7 +88,7 @@ public class Functions {
 		return new DoUntillFunction<T>();
 	}	
 	
-	public static <T> Function<String, T> toString() {
+	public static <T> Function<String, T> stringify() {
 		return new ToStringFunction<T>();
 	}
 	
