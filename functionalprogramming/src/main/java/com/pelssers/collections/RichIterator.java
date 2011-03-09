@@ -137,7 +137,7 @@ public class RichIterator<T> implements RichIterable<T> {
 	
 	@Override
 	public String stringJoin(String before, String delimiter, String after) {
-		return stringJoin(Functions.<T>toString(), before, delimiter, after);			
+		return stringJoin(Functions.<T>stringify(), before, delimiter, after);			
 	}
 	
 	@Override
